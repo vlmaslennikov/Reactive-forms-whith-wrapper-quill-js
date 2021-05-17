@@ -5,17 +5,16 @@ import {
   ElementRef,
   forwardRef,
   ViewChild,
-} from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import Quill from 'quill';
-import { BehaviorSubject } from 'rxjs';
-import { tap } from 'rxjs/operators';
+} from "@angular/core";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import Quill from "quill";
+import { BehaviorSubject } from "rxjs";
 
 @Component({
-  selector: 'app-quill',
+  selector: "app-quill",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './quill.component.html',
-  styleUrls: ['./quill.component.scss'],
+  templateUrl: "./quill.component.html",
+  styleUrls: ["./quill.component.scss"],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -26,9 +25,9 @@ import { tap } from 'rxjs/operators';
 })
 export class QuillComponent implements AfterViewInit, ControlValueAccessor {
   editor!: Quill;
-  @ViewChild('quill') quillElement!: ElementRef<HTMLElement>;
+  @ViewChild("quill") quillElement!: ElementRef<HTMLElement>;
 
-  initialInputValue = new BehaviorSubject('');
+  initialInputValue = new BehaviorSubject("");
   onChange = (val: any) => {};
   onTouch = (val: any) => {};
 
@@ -37,19 +36,17 @@ export class QuillComponent implements AfterViewInit, ControlValueAccessor {
       modules: {
         toolbar: [
           [{ header: [1, 2, false] }],
-          ['bold', 'italic', 'underline'],
-          ['image', 'code-block'],
+          ["bold", "italic", "underline"],
+          ["image", "code-block"],
         ],
       },
-      placeholder: 'Compose an epic...',
-      theme: 'snow',
+      placeholder: "Compose an epic...",
+      theme: "snow",
     });
-    this.editor.on('text-change', () =>
+    this.editor.on("text-change", () =>
       this.onChange(this.editor.root.innerHTML)
     );
-    this.initialInputValue
-      .pipe(tap((val:any) => (this.editor.root.innerHTML = val)))
-      .subscribe();
+    this.editor.off("text-change", () => {});
   }
 
   writeValue(value: any): void {

@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { QuillComponent } from './quill.component';
+import { QuillComponent } from "./quill.component";
 
-describe('InputComponent', () => {
+describe("InputComponent", () => {
   let component: QuillComponent;
   let fixture: ComponentFixture<QuillComponent>;
 
@@ -18,7 +18,7 @@ describe('InputComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
