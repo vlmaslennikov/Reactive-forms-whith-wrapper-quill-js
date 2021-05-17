@@ -13,7 +13,7 @@ import { tap } from 'rxjs/operators';
 @Component({
   selector: 'app-quill',
   templateUrl: './quill.component.html',
-  styleUrls: ['./quill.component.css'],
+  styleUrls: ['./quill.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
