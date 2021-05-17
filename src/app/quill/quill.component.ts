@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   forwardRef,
@@ -12,6 +13,7 @@ import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-quill',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './quill.component.html',
   styleUrls: ['./quill.component.scss'],
   providers: [
