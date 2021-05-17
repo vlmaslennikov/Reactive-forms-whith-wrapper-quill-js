@@ -26,7 +26,7 @@ export class QuillComponent implements AfterViewInit, ControlValueAccessor {
   editor!: Quill;
   @ViewChild('quill') quillElement!: ElementRef<HTMLElement>;
 
-  subject = new BehaviorSubject('');
+  initialInputValue = new BehaviorSubject('');
   onChange = (val: any) => {};
   onTouch = (val: any) => {};
 
@@ -43,15 +43,15 @@ export class QuillComponent implements AfterViewInit, ControlValueAccessor {
       theme: 'snow',
     });
     this.editor.on('text-change', () =>
-      console.log(this.editor.root.innerHTML)
+      this.onChange(this.editor.root.innerHTML)
     );
-    this.subject
+    this.initialInputValue
       .pipe(tap((val:any) => (this.editor.root.innerHTML = val)))
       .subscribe();
   }
 
   writeValue(value: any): void {
-    this.subject.next(value);
+    this.initialInputValue.next(value);
   }
 
   registerOnChange(fn: any): void {

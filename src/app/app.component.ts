@@ -7,11 +7,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  form!: FormGroup;
+  
+  form: FormGroup = this.formBuilder.group({
+    input: ['from app.component'],
+  });
 
-  constructor(private readonly formBuilder: FormBuilder) {
-    this.form = formBuilder.group({
-      input: ['from app.component'],
-    });
-  }
+  constructor(private readonly formBuilder: FormBuilder) {}
 }
